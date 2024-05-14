@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --primary-color: #c85a19;
+    --secondary-color: #006039;
+    --tertiary-color: white;
+}
+
+[data-theme="wimbledon"] {
+    --primary-color: #006633;
+    --secondary-color: #4c2178;
+    --tertiary-color: white;
+}
+
+[data-theme="us-open"] {
+    --primary-color: #00228d;
+    --secondary-color: #f7cd00;
+    --tertiary-color: black;
+}
+
+[data-theme="aus-open"] {
+    --primary-color: #1b8cca;
+    --secondary-color: white;
+    --tertiary-color: black;
+}
+
+button {
+    background-color: var(--secondary-color);
+    color: var(--tertiary-color);
+    border-color: var(--tertiary-color);
+}

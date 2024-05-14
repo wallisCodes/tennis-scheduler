@@ -1,33 +1,25 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  let [themeIndex, setThemeIndex] = useState(0);
+  const themes = ["roland-garros", "wimbledon", "us-open", "aus-open"];
+  let resetIndex = themeIndex >= themes.length - 1;
 
+  function nextTheme() {
+      !resetIndex ? setThemeIndex(themeIndex + 1) : setThemeIndex(0);
+  }
+  
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="App h-lvh" data-theme={themes[themeIndex]}>
+        <div className=" max-w-7xl mx-auto text-center">
+          <h1 className="text-white font-bold text-5xl">Tennis Scheduler</h1>
+          <button onClick={nextTheme} className="border rounded-md px-2 py-1 my-4">Next theme</button>
+          <div className="box w-[200px] h-[200px] mx-auto border-4 border-black"></div>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      
     </>
   )
 }
