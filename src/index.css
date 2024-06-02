@@ -30,4 +30,5 @@ button {
     background-color: var(--secondary-color);
     color: var(--tertiary-color);
     border-color: var(--tertiary-color);
+    padding: 5px 10px;
 }
