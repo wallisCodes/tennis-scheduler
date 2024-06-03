@@ -1,7 +1,10 @@
 import React, { useState } from "react"
+import Player from "./Player"
 import PlayerForm from "./PlayerForm"
+import EditPlayerForm from "./EditPlayerForm"
+import "../ScheduleWrapper.css"
 import { v4 as uuidv4 } from "uuid"
-import "../App.css"
+
 uuidv4();
 
 export default function ScheduleWrapper(){
@@ -9,7 +12,7 @@ export default function ScheduleWrapper(){
     const themes = ["roland-garros", "wimbledon", "us-open", "aus-open"];
     let resetIndex = themeIndex >= themes.length - 1;
 
-    function nextTheme() {
+    function nextTheme(){
         resetIndex ? setThemeIndex(0) : setThemeIndex(themeIndex + 1);
     }
 
@@ -24,8 +27,23 @@ export default function ScheduleWrapper(){
                 team: team,
                 isEditing: false
             }
-        ])
-        // console.log(players);
+        ]);
+    }
+
+    function deletePlayer(id){
+        setPlayers(players.filter(player => player.id !== id));
+    }
+
+    function toggleEditPlayer(id){
+        setPlayers(players.map(player => player.id === id ? 
+            {...player, isEditing: !player.isEditing} : player
+        ))
+    }
+
+    function editPlayer(fullName, team, id){
+        setPlayers(players.map(player => player.id === id ? 
+            {...player, fullName, team, isEditing: !player.isEditing} : player
+        ))
     }
 
     return (
@@ -38,18 +56,33 @@ export default function ScheduleWrapper(){
                         <button onClick={nextTheme} className="border rounded-md px-2 my-1">Next theme</button>
                     </div>
 
-
                     <div className="flex w-full">
+                        {/* FORM FOR PLAYER DATA */}
                         <div className="box flex flex-col w-1/2 border-4 border-black">
-                            {/* FORM FOR PLAYER DATA */}
                             <PlayerForm 
                                 addPlayer={addPlayer}
                             />
                         </div>
 
-                        {/* OUTPUT AREA */}
+                        {/* PLAYER LIST */}
                         <div className="box w-1/2 border-2 border-white my-4 text-left">
-                        
+                            <h1 className="text-3xl">Player List</h1>
+                            {players.map((player, index) => (
+                                player.isEditing ? (
+                                    <EditPlayerForm
+                                        key={index}
+                                        player={player}
+                                        editPlayer={editPlayer}
+                                    />
+                                ) : (
+                                    <Player
+                                        key={index}
+                                        player={player}
+                                        deletePlayer={deletePlayer}
+                                        toggleEditPlayer={toggleEditPlayer}
+                                    />
+                                )  
+                            ))}
                         </div>
                     </div>          
                 </div>

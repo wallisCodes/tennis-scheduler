@@ -29,7 +29,7 @@ export default function PlayerForm({addPlayer}){
                 </div>
 
                 <div className="flex">
-                    <label htmlFor="team" className="">Team Test</label>
+                    <label htmlFor="team" className="">Team</label>
                     <select 
                         id="team"
                         onChange={e => setTeam(e.target.value)}
@@ -49,7 +49,7 @@ export default function PlayerForm({addPlayer}){
 
                 <button
                     className="border">
-                    Add player
+                    Add Player
                 </button>
             </form>
         </>
