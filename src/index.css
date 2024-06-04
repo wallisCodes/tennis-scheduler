@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+[data-theme="roland-garros"] {
     --primary-color: #c85a19;
     --secondary-color: #006039;
     --tertiary-color: white;
