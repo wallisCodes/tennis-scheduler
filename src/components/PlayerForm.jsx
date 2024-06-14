@@ -14,27 +14,27 @@ export default function PlayerForm({addPlayer}){
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
-                <div className="flex">
-                    <label htmlFor="player-name" className="">Player Name</label>
+            <form onSubmit={handleSubmit} className="">
+                <div className="flex space-x-2">
+                    <label htmlFor="player-name" className="w-[40px]">Name</label>
                     <input 
                         type="text"
                         id="player-name"
                         placeholder="Full Name"
-                        onChange={(e) => setName(e.target.value)}
+                        onChange={e => setName(e.target.value)}
                         value={name}
-                        className=""
+                        className="w-[140px]"
                         required
                     />
                 </div>
 
-                <div className="flex">
-                    <label htmlFor="team" className="">Team</label>
+                <div className="flex space-x-2">
+                    <label htmlFor="team" className="w-[40px]">Team</label>
                     <select 
                         id="team"
                         onChange={e => setTeam(e.target.value)}
                         value={team}
-                        className=""
+                        className="w-[140px]"
                         required
                     >
                         <option value="">Choose Team</option>
