@@ -196,11 +196,13 @@ export default function ScheduleWrapper(){
     });
     const [algorithm, setAlgorithm] = useState("random");
     const [startTime, setStartTime] = useState("");
-    const [endTime, setEndTime] = useState("");
+    const [finishTime, setFinishTime] = useState("");
 
     const courtsSelectedNumber = Object.values(courts).reduce((a, court) => a + court, 0); //counting number of courts selected (truthy values)
     const suggestedPlayers = courtsSelectedNumber * 4;
     const maxPlayers = "calculate depending on number of courts and time played (not yet implemented)";
+
+    const [showSchedule, setShowSchedule] = useState(false); // global variable which controls displaying schedule, triggered by "Generate Schedule" form button
 
     function addPlayer(name, team){
         setPlayers([
@@ -230,6 +232,21 @@ export default function ScheduleWrapper(){
         ))
     }
 
+    function convertToMinutes(string){
+        const t = parseInt(string.replace(":", ""));
+        return Math.floor(t/100) * 60 + (t % 100);
+    }
+
+    function convertToTime(minutes){
+        const h = Math.floor(minutes/60);
+        const m = (minutes % 60);
+        return `${("0"+h).slice(-2)}:${("0"+m).slice(-2)}`;
+    }
+
+    function backToInput(){
+        setShowSchedule(false);
+    }
+
     return (
         <>
             <div className="App min-h-lvh" data-theme={theme}>
@@ -249,7 +266,7 @@ export default function ScheduleWrapper(){
                         </select>
                     </div>
 
-                    <div className="flex w-full">
+                    {!showSchedule && <div className="flex w-full">
                         {/* FORMS FOR INPUT DATA */}
                         <div className="box flex flex-col w-1/2 border-4 p-2 border-black">
                             <PlayerForm 
@@ -262,8 +279,11 @@ export default function ScheduleWrapper(){
                                 setAlgorithm={setAlgorithm}
                                 startTime={startTime}
                                 setStartTime={setStartTime}
-                                endTime={endTime}
-                                setEndTime={setEndTime}
+                                finishTime={finishTime}
+                                setFinishTime={setFinishTime}
+                                convertToMinutes={convertToMinutes}
+                                convertToTime={convertToTime}
+                                setShowSchedule={setShowSchedule}
                             />
                         </div>
 
@@ -287,13 +307,22 @@ export default function ScheduleWrapper(){
                                 )  
                             ))}
                         </div>
-                    </div>
-                    <div className="flex w-full border-2">
+                    </div>}
+                    <div className="flex w-full">
                         {/* OUTPUT SCHEDULE */}
-                        <Schedule
-                            players={players}
-                            courts={courts}
-                        />
+                        {showSchedule &&
+                        <div className="flex-col border-2">
+                            <button onClick={backToInput} className="">Go back</button>
+                            <Schedule
+                                players={players}
+                                courts={courts}
+                                startTime={startTime}
+                                finishTime={finishTime}
+                                convertToMinutes={convertToMinutes}
+                                convertToTime={convertToTime}
+                            />
+                        </div>
+                        }
                     </div>          
                 </div>
             </div>
