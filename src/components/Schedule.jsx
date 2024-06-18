@@ -5,11 +5,8 @@ export default function Schedule({players, courts, startTime, finishTime, conver
     // convert start and finish times into minutes
     const startMinutes = convertToMinutes(startTime);
     const finishMinutes = convertToMinutes(finishTime);
-    // console.log(`Start minutes = ${mockStartMinutes}, Finish minutes = ${mockFinishMinutes}`);
-
     // obtain number of sessions from start and finish times
     const numberOfSessions = (finishMinutes - startMinutes) / 30; // 30 minutes sessions
-    // console.log(`Number of sessions = ${numberOfSessions}`);
 
     // create session array (time format) from start and finish times
     const sessionMinutes = [];
@@ -17,10 +14,9 @@ export default function Schedule({players, courts, startTime, finishTime, conver
     for (let i = 0; i < numberOfSessions - 1; i++){
         sessionMinutes.push(sessionMinutes[i] + 30);
     }
-    // console.log(`session minutes array: ${JSON.stringify(sessionMinutes)}`);
     
     const sessionTimes = sessionMinutes.map(minutes => convertToTime(minutes));
-    console.log(`session times array: ${JSON.stringify(sessionTimes)}`);
+    // console.log(`session times array: ${JSON.stringify(sessionTimes)}`);
 
 
     // =============== COURTS LOGIC ===============
@@ -53,32 +49,52 @@ export default function Schedule({players, courts, startTime, finishTime, conver
         allSessionGroups.push(oneSessionGroups); // push each session's players to the master array
         oneSessionGroups = []; // resetting array before generating another random set of players for the next session
     }
+    console.log(`All session groups length: ${allSessionGroups.length}`);
+    console.log(`Array[0] length: ${allSessionGroups[0].length}`);
+    // console.log(`Array[1] length: ${allSessionGroups[1].length}`);
+    // console.log(`Array[2] length: ${allSessionGroups[2].length}`);
+    // console.log(`Array[3] length: ${allSessionGroups[3].length}`);
+    // console.log(`Array[4] length: ${allSessionGroups[4].length}`);
+
+    console.log(`Array[0][0] length: ${allSessionGroups[0][0].length}`);
+
+    console.log(`All session groups array: ${JSON.stringify(allSessionGroups)}`)
 
 
     const randomSchedule = sessionTimes.map((session, index) => (
+        // console.log(`All session groups array: ${JSON.stringify(allSessionGroups)}`),
+
         <table key={index}>
             <thead>
                 <tr>
                     <th className="blank-cell"></th>
                     {courtsSelected.map((_, index) => <th key={index} scope="col">{courtsSelected[index]}</th>)}
+                    
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <th rowSpan="4">{session}</th>
                     {allSessionGroups[index][0].map((player, i) => <td key={i}>{player}</td>)}
+                    {/* {allSessionGroups[index][0].map((_) => console.log(`Array[${index}][0]: ${JSON.stringify(allSessionGroups[index][0])}`))} */}
                 </tr>
                 <tr>
                     {allSessionGroups[index][1].map((player, i) => <td key={i}>{player}</td>)}
+                    {/* {allSessionGroups[index][1].map((_) => console.log(`Array[${index}][1]: ${JSON.stringify(allSessionGroups[index][1])}`))} */}
                 </tr>
                 <tr>
                     {allSessionGroups[index][2].map((player, i) => <td key={i}>{player}</td>)}
+                    {/* {allSessionGroups[index][2].map((_) => console.log(`Array[${index}][2]: ${JSON.stringify(allSessionGroups[index][2])}`))} */}
                 </tr>
                 <tr>
                     {allSessionGroups[index][3].map((player, i) => <td key={i}>{player}</td>)}
+                    {/* {allSessionGroups[index][3].map((_) => console.log(`Array[${index}][3]: ${JSON.stringify(allSessionGroups[index][3])}`))} */}
                 </tr>
             </tbody>
         </table>
+        
+        
+        
     ))
 
     

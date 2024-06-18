@@ -35,7 +35,7 @@ export default function PlayerForm({addPlayer}){
                         onChange={e => setTeam(e.target.value)}
                         value={team}
                         className="w-[140px]"
-                        required
+                        // required
                     >
                         <option value="">Choose Team</option>
                         <option value="5">Team 5</option>

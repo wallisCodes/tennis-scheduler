@@ -1,7 +1,8 @@
 import React, { useState } from "react"
 
-export default function ScheduleForm({courts, setCourts, algorithm, setAlgorithm, startTime, setStartTime,
-                                     finishTime, setFinishTime, convertToMinutes, convertToTime, setShowSchedule}){
+export default function ScheduleForm({players, suggestedPlayers, maxPlayers, courts, setCourts, courtsSelectedNumber,
+                                    algorithm, setAlgorithm, startTime, setStartTime, finishTime, 
+                                    setFinishTime, convertToMinutes, convertToTime, setShowSchedule}){
                                         
     function handleCourts(event){
         const {name, checked} = event.target;
@@ -13,7 +14,6 @@ export default function ScheduleForm({courts, setCourts, algorithm, setAlgorithm
          })
     }
 
-
     function minutesUntilLastTime(startTime){
         const lastMinutes = 1260; // 9pm in minutes
         return lastMinutes - convertToMinutes(startTime)
@@ -24,18 +24,24 @@ export default function ScheduleForm({courts, setCourts, algorithm, setAlgorithm
 
     for (let i = 1; i <= sessionsUntilLastTime; i++){
         let timeOption = convertToTime(convertToMinutes(startTime) + i * 30);
-        // console.log(`time option: ${timeOption}`);
         potentialFinishTimes.push(timeOption);
     }
-    // console.log(`finish time options: ${JSON.stringify(potentialFinishTimes)}`);
     const finishTimeOptions = potentialFinishTimes.map((timeOption, index) => <option key={index}>{timeOption}</option>);
 
+    // form validation logic to ensure smooth schedule generation
+    const correctPlayers = suggestedPlayers <= players.length && players.length <= maxPlayers;
+    const correctCourts = courtsSelectedNumber >= 1;
+    const validationPassed = correctPlayers && correctCourts;
 
     function handleSubmit(event){
         event.preventDefault();
-        // generateSchedule(players, courts, algorithm);
-        console.log(`Current algorithm: ${algorithm}`);
-        setShowSchedule(true);
+        if (!correctCourts){
+            alert("Make sure at least one court has been selected.");
+        } else if (!correctPlayers){
+            alert("Make sure a suitable number of players have been added for the courts selected.");
+        } else {
+            setShowSchedule(true);
+        }
     }
 
 
@@ -108,7 +114,6 @@ export default function ScheduleForm({courts, setCourts, algorithm, setAlgorithm
                     </div>
                 </fieldset>
                 
-
                 {/* Algorithm types */}
                 <fieldset>
                     <legend>Scheduling algorithm</legend>
@@ -206,8 +211,7 @@ export default function ScheduleForm({courts, setCourts, algorithm, setAlgorithm
                         </select>
                     </div>
                 </fieldset>
-                
-                <button className="border">Generate Schedule</button>
+                <button className={validationPassed ? "border" : "border bg-red-500"}>Generate Schedule</button>
               </form>
         </>
     )
