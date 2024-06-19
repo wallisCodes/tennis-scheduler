@@ -49,74 +49,74 @@ export default function ScheduleForm({players, suggestedPlayers, maxPlayers, cou
         <>
             <form onSubmit={handleSubmit}>
                 {/* Court checkboxes */}
-                <fieldset>
-                    <legend>Choose courts</legend>
-                    <div className="space-x-2">
-                        <label htmlFor="court-1">1</label>
+                <fieldset className="p-2 sm:p-4 my-2 sm:my-4 text-lg">
+                    <legend className="px-2">Choose courts</legend>
+                    <div className="">
+                        <label htmlFor="court-1" className="mr-2 font-semibold">1</label>
                         <input 
                             type="checkbox"
                             id="court-1"
                             onChange={handleCourts}
                             name="Court 1"
                             checked={courts["Court 1"]}
-                            className=""
+                            className="mr-4"
                         />
                         
-                        <label htmlFor="court-2">2</label>
+                        <label htmlFor="court-2" className="mr-2 font-semibold">2</label>
                         <input 
                             type="checkbox"
                             id="court-2"
                             onChange={handleCourts}
                             name="Court 2"
                             checked={courts["Court 2"]}
-                            className=""
+                            className="mr-4"
                         />
                         
-                        <label htmlFor="court-3">3</label>
+                        <label htmlFor="court-3" className="mr-2 font-semibold">3</label>
                         <input 
                             type="checkbox"
                             id="court-3"
                             onChange={handleCourts}
                             name="Court 3"
                             checked={courts["Court 3"]}
-                            className=""
+                            className="mr-4"
                         />
                         
-                        <label htmlFor="court-4">4</label>
+                        <label htmlFor="court-4" className="mr-2 font-semibold">4</label>
                         <input 
                             type="checkbox"
                             id="court-4"
                             onChange={handleCourts}
                             name="Court 4"
                             checked={courts["Court 4"]}
-                            className=""
+                            className="mr-4"
                         />
                         
-                        <label htmlFor="court-5">5</label>
+                        <label htmlFor="court-5" className="mr-2 font-semibold">5</label>
                         <input 
                             type="checkbox"
                             id="court-5"
                             onChange={handleCourts}
                             name="Court 5"
                             checked={courts["Court 5"]}
-                            className=""
+                            className="mr-4"
                         />
                         
-                        <label htmlFor="court-6">6</label>
+                        <label htmlFor="court-6" className="mr-2 font-semibold">6</label>
                         <input 
                             type="checkbox"
                             id="court-6"
                             onChange={handleCourts}
                             name="Court 6"
                             checked={courts["Court 6"]}
-                            className=""
+                            className="mr-4"
                         />
                     </div>
                 </fieldset>
                 
                 {/* Algorithm types */}
-                <fieldset>
-                    <legend>Scheduling algorithm</legend>
+                <fieldset className="p-2 sm:p-4 my-2 sm:my-4 text-lg">
+                    <legend className="px-2">Scheduling algorithm</legend>
                     <input 
                         type="radio"
                         id="random"
@@ -125,7 +125,7 @@ export default function ScheduleForm({players, suggestedPlayers, maxPlayers, cou
                         checked={algorithm === "random"}
                         onChange={(e) => setAlgorithm(e.target.value)}
                     />
-                    <label htmlFor="random">Random</label>
+                    <label htmlFor="random" className="ml-2 font-semibold">Random</label>
                     <br />
 
                     <input 
@@ -137,7 +137,7 @@ export default function ScheduleForm({players, suggestedPlayers, maxPlayers, cou
                         onChange={(e) => setAlgorithm(e.target.value)}
                         disabled
                     />
-                    <label htmlFor="teams">Teams (coming soon)</label>
+                    <label htmlFor="teams" className="ml-2">Teams (coming soon)</label>
                     <br />
 
                     {/* <input 
@@ -154,15 +154,15 @@ export default function ScheduleForm({players, suggestedPlayers, maxPlayers, cou
                 </fieldset>
 
                 {/* Time picker */}
-                <fieldset>
-                    <legend>Pick a time range</legend>
+                <fieldset className="p-2 sm:p-4 my-2 sm:my-4 text-lg">
+                    <legend className="px-2">Pick a time range</legend>
                     <div className="flex">
-                        <label htmlFor="start-time" className="">Start time</label>
+                        <label htmlFor="start-time" className="w-[150px] font-semibold">Start time</label>
                         <select 
                             id="start-time"
                             onChange={e => setStartTime(e.target.value)}
                             value={startTime}
-                            className=""
+                            className="w-[160px] text-center"
                             required
                         >
                             <option value="">Choose Time</option>
@@ -198,12 +198,12 @@ export default function ScheduleForm({players, suggestedPlayers, maxPlayers, cou
                     </div>
 
                     <div className="flex">
-                        <label htmlFor="finish-time" className="">Finish time</label>
+                        <label htmlFor="finish-time" className="w-[150px] font-semibold">Finish time</label>
                         <select 
                             id="finish-time"
                             onChange={e => setFinishTime(e.target.value)}
                             value={finishTime}
-                            className=""
+                            className="w-[160px] text-center"
                             required
                         >
                             <option value="">{startTime == "" ? "Pick a Start Time" : "Choose Time"}</option>
@@ -211,7 +211,7 @@ export default function ScheduleForm({players, suggestedPlayers, maxPlayers, cou
                         </select>
                     </div>
                 </fieldset>
-                <button className={validationPassed ? "border" : "border bg-red-500"}>Generate Schedule</button>
+                <button className={validationPassed ? "mx-2 my-4 border-2 text-xl font-bold" : "mx-2 my-4 border-2 text-xl font-bold bg-[var(--primary-alt-color)]"}>Generate Schedule</button>
               </form>
         </>
     )

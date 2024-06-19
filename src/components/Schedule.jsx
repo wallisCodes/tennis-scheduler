@@ -14,9 +14,7 @@ export default function Schedule({players, courts, startTime, finishTime, conver
     for (let i = 0; i < numberOfSessions - 1; i++){
         sessionMinutes.push(sessionMinutes[i] + 30);
     }
-    
     const sessionTimes = sessionMinutes.map(minutes => convertToTime(minutes));
-    // console.log(`session times array: ${JSON.stringify(sessionTimes)}`);
 
 
     // =============== COURTS LOGIC ===============
@@ -49,58 +47,38 @@ export default function Schedule({players, courts, startTime, finishTime, conver
         allSessionGroups.push(oneSessionGroups); // push each session's players to the master array
         oneSessionGroups = []; // resetting array before generating another random set of players for the next session
     }
-    console.log(`All session groups length: ${allSessionGroups.length}`);
-    console.log(`Array[0] length: ${allSessionGroups[0].length}`);
-    // console.log(`Array[1] length: ${allSessionGroups[1].length}`);
-    // console.log(`Array[2] length: ${allSessionGroups[2].length}`);
-    // console.log(`Array[3] length: ${allSessionGroups[3].length}`);
-    // console.log(`Array[4] length: ${allSessionGroups[4].length}`);
-
-    console.log(`Array[0][0] length: ${allSessionGroups[0][0].length}`);
-
-    console.log(`All session groups array: ${JSON.stringify(allSessionGroups)}`)
 
 
     const randomSchedule = sessionTimes.map((session, index) => (
-        // console.log(`All session groups array: ${JSON.stringify(allSessionGroups)}`),
-
-        <table key={index}>
+        <table key={index} className="text-center text-sm sm:text-lg my-4 sm:m-4 text-[var(--table-header-color)]">
             <thead>
-                <tr>
+                <tr className="bg-[var(--primary-color)]">
                     <th className="blank-cell"></th>
                     {courtsSelected.map((_, index) => <th key={index} scope="col">{courtsSelected[index]}</th>)}
-                    
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <th rowSpan="4">{session}</th>
+            <tbody className="bg-[var(--primary-alt-color)]">
+                <tr className="">
+                    <th rowSpan="4" className="bg-[var(--primary-color)]">{session}</th>
                     {allSessionGroups[index][0].map((player, i) => <td key={i}>{player}</td>)}
-                    {/* {allSessionGroups[index][0].map((_) => console.log(`Array[${index}][0]: ${JSON.stringify(allSessionGroups[index][0])}`))} */}
                 </tr>
                 <tr>
                     {allSessionGroups[index][1].map((player, i) => <td key={i}>{player}</td>)}
-                    {/* {allSessionGroups[index][1].map((_) => console.log(`Array[${index}][1]: ${JSON.stringify(allSessionGroups[index][1])}`))} */}
                 </tr>
                 <tr>
                     {allSessionGroups[index][2].map((player, i) => <td key={i}>{player}</td>)}
-                    {/* {allSessionGroups[index][2].map((_) => console.log(`Array[${index}][2]: ${JSON.stringify(allSessionGroups[index][2])}`))} */}
                 </tr>
                 <tr>
                     {allSessionGroups[index][3].map((player, i) => <td key={i}>{player}</td>)}
-                    {/* {allSessionGroups[index][3].map((_) => console.log(`Array[${index}][3]: ${JSON.stringify(allSessionGroups[index][3])}`))} */}
                 </tr>
             </tbody>
         </table>
-        
-        
-        
     ))
 
     
     return (
         <>
-            <div className="flex-row space-y-10 min-h-96">
+            <div className="flex flex-col">
                 {randomSchedule}
             </div>
         </>

@@ -4,37 +4,66 @@
 
 [data-theme="roland-garros"] {
     --primary-color: #c85a19;
+    --primary-alt-color: #e9874e;
     --secondary-color: #006039;
+    --secondary-alt-color: #00e070;
     --tertiary-color: white;
+    --button-text-color: white;
+    --legend-text-color: white;
+    --table-header-color: black;
 }
 
 [data-theme="wimbledon"] {
     --primary-color: #006633;
+    --primary-alt-color: #00cc66;
     --secondary-color: #4c2178;
+    --secondary-alt-color: #813bc9;
     --tertiary-color: white;
+    --button-text-color: white;
+    --legend-text-color: white;
+    --table-header-color: black;
 }
 
 [data-theme="us-open"] {
     --primary-color: #00228d;
+    --primary-alt-color: #003dfc;
     --secondary-color: #f7cd00;
+    --secondary-alt-color: #ffe047;
     --tertiary-color: black;
+    --button-text-color: white;
+    --legend-text-color: white;
+    --table-header-color: white;
 }
 
 [data-theme="aus-open"] {
     --primary-color: #1b8cca;
+    --primary-alt-color: #51b3e8;
     --secondary-color: white;
+    --secondary-alt-color: #e6e6e6;
     --tertiary-color: black;
+    --button-text-color: white;
+    --legend-text-color: white;
+    --table-header-color: black;
 }
 
 button {
-    background-color: var(--secondary-color);
-    color: var(--tertiary-color);
+    background-color: var(--primary-color);
+    color: var(--button-text-color);
     border-color: var(--tertiary-color);
-    padding: 5px 10px;
+    padding: 5px 20px;
+}
+
+button[data-theme="us-open"] {
+    color: white;
 }
 
 fieldset {
-    border: 1px solid white;
+    border: 1px solid var(--tertiary-color);
+}
+
+legend {
+    color: var(--legend-text-color);
+    background-color: var(--primary-color);
 }
 
 th, td {
@@ -43,6 +72,23 @@ th, td {
     border-collapse: separate;
 }
 
+th {
+    width: 100px;
+}
+
+td {
+    width: 164px;
+}
+
+.App {
+    background-color: var(--primary-color);
+}
+
+.box {
+    background-color: var(--secondary-color);
+}
+
 .blank-cell {
     border: none;
+    background-color: var(--secondary-color);
 }
