@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 
-export default function ScheduleForm({players, suggestedPlayers, maxPlayers, courts, setCourts, courtsSelectedNumber,
-                                    algorithm, setAlgorithm, startTime, setStartTime, finishTime, 
-                                    setFinishTime, convertToMinutes, convertToTime, setShowSchedule}){
+export default function ScheduleForm({players, suggestedPlayers, maxPlayers, courts, setCourts, courtsSelectedNumber, algorithm,
+                                    setAlgorithm, sessionLength, setSessionLength, sessionDuration, startTime, setStartTime,
+                                    finishTime, setFinishTime, convertToMinutes, convertToTime, setShowSchedule}){
                                         
     function handleCourts(event){
         const {name, checked} = event.target;
@@ -19,11 +19,11 @@ export default function ScheduleForm({players, suggestedPlayers, maxPlayers, cou
         return lastMinutes - convertToMinutes(startTime)
     }
     
-    const sessionsUntilLastTime = minutesUntilLastTime(startTime) / 30;
+    const sessionsUntilLastTime = Math.floor(minutesUntilLastTime(startTime) / sessionDuration);
     const potentialFinishTimes = [];
 
     for (let i = 1; i <= sessionsUntilLastTime; i++){
-        let timeOption = convertToTime(convertToMinutes(startTime) + i * 30);
+        let timeOption = convertToTime(convertToMinutes(startTime) + i * sessionDuration);
         potentialFinishTimes.push(timeOption);
     }
     const finishTimeOptions = potentialFinishTimes.map((timeOption, index) => <option key={index}>{timeOption}</option>);
@@ -155,7 +155,57 @@ export default function ScheduleForm({players, suggestedPlayers, maxPlayers, cou
 
                 {/* Time picker */}
                 <fieldset className="p-2 sm:p-4 my-2 sm:my-4 text-lg">
-                    <legend className="px-2">Pick a time range</legend>
+                    <legend className="px-2">Session timings</legend>
+                    {/* Session length picker */}
+                    <div className="sm:flex mb-2">
+                        <p className="w-fit bg-[var(--secondary-color)] font-semibold sm:mr-4 ">Session length (minutes)</p>
+                        <div>
+                            <input 
+                                type="radio"
+                                id="30-mins"
+                                name="sessionLength"
+                                value="30"
+                                checked={sessionLength === "30"}
+                                onChange={(e) => setSessionLength(e.target.value)}
+                            />
+                            <label htmlFor="30-mins" className={sessionLength === "30" ? "ml-2 mr-6 font-semibold" : "ml-2 mr-6"}>30</label>
+                        </div>
+                        <div>
+                            <input 
+                                type="radio"
+                                id="60-mins"
+                                name="sessionLength"
+                                value="60"
+                                checked={sessionLength === "60"}
+                                onChange={(e) => setSessionLength(e.target.value)}
+                            />
+                            <label htmlFor="60-mins" className={sessionLength === "60" ? "ml-2 mr-6 font-semibold" : "ml-2 mr-6"}>60</label>
+                        </div>
+                        <div>
+                            <input 
+                                type="radio"
+                                id="90-mins"
+                                name="sessionLength"
+                                value="90"
+                                checked={sessionLength === "90"}
+                                onChange={(e) => setSessionLength(e.target.value)}
+                            />
+                            <label htmlFor="90-mins" className={sessionLength === "90" ? "ml-2 mr-6 font-semibold" : "ml-2 mr-6"}>90</label>
+                        </div>
+                        <div>
+                            <input 
+                                type="radio"
+                                id="120-mins"
+                                name="sessionLength"
+                                value="120"
+                                checked={sessionLength === "120"}
+                                onChange={(e) => setSessionLength(e.target.value)}
+                            />
+                            <label htmlFor="120-mins" className={sessionLength === "120" ? "ml-2 mr-6 font-semibold" : "ml-2 mr-6"}>120</label>
+                        </div>
+                    </div>
+
+                    {/* Session start time */}
                     <div className="flex">
                         <label htmlFor="start-time" className="w-[150px] font-semibold">Start time</label>
                         <select 
@@ -196,7 +246,8 @@ export default function ScheduleForm({players, suggestedPlayers, maxPlayers, cou
                             <option value="20:30">20:30</option>
                         </select>
                     </div>
-
+                    
+                    {/* Session finish time */}
                     <div className="flex">
                         <label htmlFor="finish-time" className="w-[150px] font-semibold">Finish time</label>
                         <select 

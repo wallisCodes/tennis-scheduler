@@ -1,18 +1,19 @@
 import React from "react"
 
-export default function Schedule({players, courts, startTime, finishTime, convertToMinutes, convertToTime}){
+export default function Schedule({players, courts, sessionDuration, startTime,
+                                finishTime, convertToMinutes, convertToTime}){
     // =============== SESSION LOGIC ===============
     // convert start and finish times into minutes
     const startMinutes = convertToMinutes(startTime);
     const finishMinutes = convertToMinutes(finishTime);
     // obtain number of sessions from start and finish times
-    const numberOfSessions = (finishMinutes - startMinutes) / 30; // 30 minutes sessions
+    const numberOfSessions = (finishMinutes - startMinutes) / sessionDuration;
 
     // create session array (time format) from start and finish times
     const sessionMinutes = [];
     sessionMinutes.push(startMinutes);
     for (let i = 0; i < numberOfSessions - 1; i++){
-        sessionMinutes.push(sessionMinutes[i] + 30);
+        sessionMinutes.push(sessionMinutes[i] + sessionDuration);
     }
     const sessionTimes = sessionMinutes.map(minutes => convertToTime(minutes));
 

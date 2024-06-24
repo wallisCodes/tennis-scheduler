@@ -9,106 +9,106 @@ import { v4 as uuidv4 } from "uuid"
 uuidv4();
 
 export default function ScheduleWrapper(){
-    const [theme, setTheme] = useState("roland-garros");
-    // const [players, setPlayers] = useState([]);
-    const [players, setPlayers] = useState([ //16 player testing
-        {
-            id: uuidv4(),
-            fullName: "Josh Wallis",
-            team: "5",
-            isEditing: false
-        },
-        {
-            id: uuidv4(),
-            fullName: "Dylan Horman",
-            team: "5",
-            isEditing: false
-        },
-        {
-            id: uuidv4(),
-            fullName: "Dan Grandl",
-            team: "5",
-            isEditing: false
-        },
-        {
-            id: uuidv4(),
-            fullName: "Nick Hinton",
-            team: "5",
-            isEditing: false
-        },
-        {
-            id: uuidv4(),
-            fullName: "Sean Watts",
-            team: "5",
-            isEditing: false
-        },
-        {
-            id: uuidv4(),
-            fullName: "Tiger Tom",
-            team: "5",
-            isEditing: false
-        },
-        {
-            id: uuidv4(),
-            fullName: "Joe Hodges",
-            team: "5",
-            isEditing: false
-        },
-        {
-            id: uuidv4(),
-            fullName: "Mark Molnar",
-            team: "5",
-            isEditing: false
-        },
-        {
-            id: uuidv4(),
-            fullName: "Nick Jones",
-            team: "4",
-            isEditing: false
-        },
-        {
-            id: uuidv4(),
-            fullName: "Darren Healy",
-            team: "4",
-            isEditing: false
-        },
-        {
-            id: uuidv4(),
-            fullName: "Dave Buick",
-            team: "4",
-            isEditing: false
-        },
-        {
-            id: uuidv4(),
-            fullName: "Tom Darwell",
-            team: "4",
-            isEditing: false
-        },
-        {
-            id: uuidv4(),
-            fullName: "Rob Phillips",
-            team: "4",
-            isEditing: false
-        },
-        {
-            id: uuidv4(),
-            fullName: "Karl Gosbee",
-            team: "4",
-            isEditing: false
-        },
-        {
-            id: uuidv4(),
-            fullName: "Nick Cunningham",
-            team: "4",
-            isEditing: false
-        },
-        {
-            id: uuidv4(),
-            fullName: "Harry Harpin",
-            team: "4",
-            isEditing: false
-        }
-    ]);
+    const [theme, setTheme] = useState("wimbledon");
+    const [players, setPlayers] = useState([]);
+    // const [players, setPlayers] = useState([ //16 player testing
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Josh Wallis",
+    //         team: "5",
+    //         isEditing: false
+    //     },
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Dylan Horman",
+    //         team: "5",
+    //         isEditing: false
+    //     },
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Dan Grandl",
+    //         team: "5",
+    //         isEditing: false
+    //     },
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Nick Hinton",
+    //         team: "5",
+    //         isEditing: false
+    //     },
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Sean Watts",
+    //         team: "5",
+    //         isEditing: false
+    //     },
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Tiger Tom",
+    //         team: "5",
+    //         isEditing: false
+    //     },
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Joe Hodges",
+    //         team: "5",
+    //         isEditing: false
+    //     },
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Mark Molnar",
+    //         team: "5",
+    //         isEditing: false
+    //     },
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Nick Jones",
+    //         team: "4",
+    //         isEditing: false
+    //     },
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Darren Healy",
+    //         team: "4",
+    //         isEditing: false
+    //     },
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Dave Buick",
+    //         team: "4",
+    //         isEditing: false
+    //     },
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Tom Darwell",
+    //         team: "4",
+    //         isEditing: false
+    //     },
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Rob Phillips",
+    //         team: "4",
+    //         isEditing: false
+    //     },
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Karl Gosbee",
+    //         team: "4",
+    //         isEditing: false
+    //     },
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Nick Cunningham",
+    //         team: "4",
+    //         isEditing: false
+    //     },
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Harry Harpin",
+    //         team: "4",
+    //         isEditing: false
+    //     }
+    // ]);
     const [courts, setCourts] = useState({
         "Court 1": false,
         "Court 2": false,
@@ -118,9 +118,11 @@ export default function ScheduleWrapper(){
         "Court 6": false
     });
     const [algorithm, setAlgorithm] = useState("random");
+    const [sessionLength, setSessionLength] = useState("30");
     const [startTime, setStartTime] = useState("");
     const [finishTime, setFinishTime] = useState("");
 
+    const sessionDuration = parseInt(sessionLength);
     const courtsSelectedNumber = Object.values(courts).reduce((a, court) => a + court, 0); //counting number of courts selected (truthy values)
     const suggestedPlayers = courtsSelectedNumber * 4;
     const maxPlayers = suggestedPlayers + courtsSelectedNumber;
@@ -205,6 +207,9 @@ export default function ScheduleWrapper(){
                                 courtsSelectedNumber={courtsSelectedNumber}
                                 algorithm={algorithm}
                                 setAlgorithm={setAlgorithm}
+                                sessionLength={sessionLength}
+                                setSessionLength={setSessionLength}
+                                sessionDuration={sessionDuration}
                                 startTime={startTime}
                                 setStartTime={setStartTime}
                                 finishTime={finishTime}
@@ -216,8 +221,9 @@ export default function ScheduleWrapper(){
                         </div>
 
                         {/* PLAYER LIST */}
-                        <div className="bg-[var(--primary-alt-color)] sm:w-1/2 border-4 p-4">
+                        <div className={players.length === 0 ? "flex flex-col justify-between bg-[var(--primary-alt-color)] sm:w-1/2 min-h-60 border-4 p-4" : "bg-[var(--primary-alt-color)] sm:w-1/2 min-h-60 border-4 p-4"}>
                             <h1 className="text-3xl font-semibold text-center">{`${players.length}/${suggestedPlayers} playing  (${maxPlayers} max)`}</h1>
+                            {players.length === 0 && <h2 className="text-2xl align-middle text-center">Check players here before creating a schedule!</h2>}
                             <ul className="mt-6">
                                 {players.map((player, index) => (
                                     player.isEditing ? (
@@ -251,6 +257,7 @@ export default function ScheduleWrapper(){
                             <Schedule
                                 players={players}
                                 courts={courts}
+                                sessionDuration={sessionDuration}
                                 startTime={startTime}
                                 finishTime={finishTime}
                                 convertToMinutes={convertToMinutes}
