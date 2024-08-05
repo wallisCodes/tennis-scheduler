@@ -111,6 +111,26 @@ export default function ScheduleForm({players, suggestedPlayers, maxPlayers, cou
                             checked={courts["Court 6"]}
                             className="mr-4"
                         />
+
+                        <label htmlFor="court-7" className="mr-2 font-semibold">7</label>
+                        <input 
+                            type="checkbox"
+                            id="court-7"
+                            onChange={handleCourts}
+                            name="Court 7"
+                            checked={courts["Court 7"]}
+                            className="mr-4"
+                        />
+
+                        <label htmlFor="court-8" className="mr-2 font-semibold">8</label>
+                        <input 
+                            type="checkbox"
+                            id="court-8"
+                            onChange={handleCourts}
+                            name="Court 8"
+                            checked={courts["Court 8"]}
+                            className="mr-4"
+                        />
                     </div>
                 </fieldset>
                 

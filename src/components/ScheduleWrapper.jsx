@@ -11,6 +11,156 @@ uuidv4();
 export default function ScheduleWrapper(){
     const [theme, setTheme] = useState("wimbledon");
     const [players, setPlayers] = useState([]);
+    // const [players, setPlayers] = useState([ //4 player testing
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Josh W",
+    //         team: "5",
+    //         isEditing: false
+    //     },
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Dylan H",
+    //         team: "5",
+    //         isEditing: false
+    //     },
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Dan G",
+    //         team: "5",
+    //         isEditing: false
+    //     },
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Nick H",
+    //         team: "5",
+    //         isEditing: false
+    //     }
+    // ]);
+    // const [players, setPlayers] = useState([ //8 player testing
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Josh W",
+    //         team: "5",
+    //         isEditing: false
+    //     },
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Dylan H",
+    //         team: "5",
+    //         isEditing: false
+    //     },
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Dan G",
+    //         team: "5",
+    //         isEditing: false
+    //     },
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Nick H",
+    //         team: "5",
+    //         isEditing: false
+    //     },
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Sean W",
+    //         team: "5",
+    //         isEditing: false
+    //     },
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Tiger T",
+    //         team: "5",
+    //         isEditing: false
+    //     },
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Joe H",
+    //         team: "5",
+    //         isEditing: false
+    //     },
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Mark M",
+    //         team: "5",
+    //         isEditing: false
+    //     }
+    // ]);
+    // const [players, setPlayers] = useState([ //12 player testing
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Josh W",
+    //         team: "5",
+    //         isEditing: false
+    //     },
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Dylan H",
+    //         team: "5",
+    //         isEditing: false
+    //     },
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Dan G",
+    //         team: "5",
+    //         isEditing: false
+    //     },
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Nick H",
+    //         team: "5",
+    //         isEditing: false
+    //     },
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Sean W",
+    //         team: "5",
+    //         isEditing: false
+    //     },
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Tiger T",
+    //         team: "5",
+    //         isEditing: false
+    //     },
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Joe H",
+    //         team: "5",
+    //         isEditing: false
+    //     },
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Mark M",
+    //         team: "5",
+    //         isEditing: false
+    //     },
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Nick Jones",
+    //         team: "4",
+    //         isEditing: false
+    //     },
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Darren Healy",
+    //         team: "4",
+    //         isEditing: false
+    //     },
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Dave Buick",
+    //         team: "4",
+    //         isEditing: false
+    //     },
+    //     {
+    //         id: uuidv4(),
+    //         fullName: "Tom Darwell",
+    //         team: "4",
+    //         isEditing: false
+    //     }
+    // ]);
     // const [players, setPlayers] = useState([ //16 player testing
     //     {
     //         id: uuidv4(),
@@ -115,12 +265,16 @@ export default function ScheduleWrapper(){
         "Court 3": false,
         "Court 4": false,
         "Court 5": false,
-        "Court 6": false
+        "Court 6": false,
+        "Court 7": false,
+        "Court 8": false
     });
     const [algorithm, setAlgorithm] = useState("random");
     const [sessionLength, setSessionLength] = useState("30");
     const [startTime, setStartTime] = useState("");
+    // const [startTime, setStartTime] = useState("08:00");
     const [finishTime, setFinishTime] = useState("");
+    // const [finishTime, setFinishTime] = useState("10:00");
 
     const sessionDuration = parseInt(sessionLength);
     const courtsSelectedNumber = Object.values(courts).reduce((a, court) => a + court, 0); //counting number of courts selected (truthy values)
