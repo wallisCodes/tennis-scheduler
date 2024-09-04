@@ -88,11 +88,11 @@ export default function Schedule({players, courts, sessionDuration, startTime,
         const pairCounts = new Map();
         const allPairs = [];
     
-        arrays.forEach((array, index) => { // DOES INDEX NEED TO BE HERE??
+        arrays.forEach((array) => {
             const pairs = generatePairs(array);
             allPairs.push(...pairs);
             
-            // loop through each pair and count how many instances there are of each
+            // Loop through each pair and count how many instances there are of each
             pairs.forEach(pair => {
                 // Sort pairs to ensure pairs like ["Player 1", "Player 2"] and ["Player 2", "Player 1"] are treated as the same
                 const sortedPair = pair.sort().toString(); // Alphabetically arranging player names inside pair array
@@ -163,45 +163,36 @@ export default function Schedule({players, courts, sessionDuration, startTime,
     // console.log(`Max duplicates: ${maxDuplicates}`);
     // console.log(`Generation attempts: ${generationAttempt}`);
     
-    
-    
-
-    
-    
  
     // console.log(`(Counts Only): ${countsOnly}`);
     // console.log(`ACTUAL max duplicates: ${maxDuplicates}`);
 
     // choosing maxDuplicates depending on total pairings?
-    const totalPairings = (Math.floor(players.length/4)*sessionTimes.length*2); // exclude excess players who are sitting out
-    console.log(`Total pairings: ${totalPairings}`);
-
-    
-    
-
+    // const totalPairings = (Math.floor(players.length/4)*sessionTimes.length*2); // exclude excess players who are sitting out
+    // console.log(`Total pairings: ${totalPairings}`);
 
 
     const randomSchedule = sessionTimes.map((session, index) => (
-        <table key={index} className="text-center text-sm sm:text-lg my-4 sm:m-4 text-[var(--table-header-color)]">
+        <table key={index} className="text-center text-sm sm:text-lg my-3 sm:m-4">
             <thead>
-                <tr className="bg-[var(--primary-color)]">
-                    <th className="blank-cell"></th>
-                    {courtsSelected.map((_, index) => <th key={index} scope="col">{courtsSelected[index]}</th>)}
+                <tr>
+                    <th className="blank-cell px-[3px] py-[5px] sm:p-2.5"></th>
+                    {courtsSelected.map((_, index) => <th key={index} className="bg-[var(--background-color)] text-[var(--on-background-color)] min-w-20 px-[3px] py-[5px] sm:p-2.5" scope="col">{courtsSelected[index]}</th>)}
                 </tr>
             </thead>
             <tbody className="bg-[var(--primary-alt-color)]">
-                <tr className="">
-                    <th rowSpan="4" className="bg-[var(--primary-color)]">{session}</th>
-                    {allSessionGroups[index][0].map((player, i) => <td key={i}>{player}</td>)}
+                <tr>
+                    <th rowSpan="4" className="bg-[var(--background-color)] text-[var(--on-background-color)] min-w-12 sm:min-w-20 max-w-20 sm:max-w-40 px-[3px] py-[5px] sm:p-2.5">{session}</th>
+                    {allSessionGroups[index][0].map((player, i) => <td className=" px-[3px] md:px-5 py-[5px] md:py-2 sm:p-2.5 border-b-0" key={i}>{player}</td>)}
                 </tr>
                 <tr>
-                    {allSessionGroups[index][1].map((player, i) => <td key={i}>{player}</td>)}
+                    {allSessionGroups[index][1].map((player, i) => <td className=" px-[3px] md:px-5 py-[5px] md:py-2 sm:p-2.5 border-t-0" key={i}>{player}</td>)}
                 </tr>
                 <tr>
-                    {allSessionGroups[index][2].map((player, i) => <td key={i}>{player}</td>)}
+                    {allSessionGroups[index][2].map((player, i) => <td className=" px-[3px] md:px-5 py-[5px] md:py-2 sm:p-2.5 border-b-0" key={i}>{player}</td>)}
                 </tr>
                 <tr>
-                    {allSessionGroups[index][3].map((player, i) => <td key={i}>{player}</td>)}
+                    {allSessionGroups[index][3].map((player, i) => <td className=" px-[3px] md:px-5 py-[5px] md:py-2 sm:p-2.5 border-t-0" key={i}>{player}</td>)}
                 </tr>
             </tbody>
         </table>
@@ -210,7 +201,7 @@ export default function Schedule({players, courts, sessionDuration, startTime,
     
     return (
         <>
-            <div className="flex flex-col">
+            <div className="flex flex-col w-fit mx-auto">
                 {randomSchedule}
             </div>
         </>

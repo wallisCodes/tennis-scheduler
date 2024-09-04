@@ -47,96 +47,110 @@ export default function ScheduleForm({players, suggestedPlayers, maxPlayers, cou
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
+            <form className="sm:text-lg" onSubmit={handleSubmit}>
                 {/* Court checkboxes */}
-                <fieldset className="p-2 sm:p-4 my-2 sm:my-4 text-lg">
-                    <legend className="px-2">Choose courts</legend>
-                    <div className="">
-                        <label htmlFor="court-1" className="mr-2 font-semibold">1</label>
-                        <input 
-                            type="checkbox"
-                            id="court-1"
-                            onChange={handleCourts}
-                            name="Court 1"
-                            checked={courts["Court 1"]}
-                            className="mr-4"
-                        />
+                <fieldset className="p-2 sm:p-4 my-6 md:my-8 lg:my-10">
+                    <legend className="px-2 rounded-md text-[var(--on-primary-color)]">Court Selection</legend>
+                    <div className="flex flex-wrap gap-x-6 gap-y-1 text-[var(--on-surface-color)]">
+                        <div className="flex gap-6">
+                            <div className="flex gap-2">
+                                <label htmlFor="court-1" className="font-semibold">1</label>
+                                <input 
+                                    type="checkbox"
+                                    id="court-1"
+                                    onChange={handleCourts}
+                                    name="Court 1"
+                                    checked={courts["Court 1"]}
+                                    className="text-[var(--on-surface-color)]"
+                                />
+                            </div>
+                            <div className="flex gap-2">
+                                <label htmlFor="court-2" className="font-semibold">2</label>
+                                <input 
+                                    type="checkbox"
+                                    id="court-2"
+                                    onChange={handleCourts}
+                                    name="Court 2"
+                                    checked={courts["Court 2"]}
+                                    className=""
+                                />
+                            </div>
+                            <div className="flex gap-2">
+                                <label htmlFor="court-3" className="font-semibold">3</label>
+                                <input 
+                                    type="checkbox"
+                                    id="court-3"
+                                    onChange={handleCourts}
+                                    name="Court 3"
+                                    checked={courts["Court 3"]}
+                                    className=""
+                                />
+                            </div>
+                            <div className="flex gap-2">
+                                <label htmlFor="court-4" className="font-semibold">4</label>
+                                <input 
+                                    type="checkbox"
+                                    id="court-4"
+                                    onChange={handleCourts}
+                                    name="Court 4"
+                                    checked={courts["Court 4"]}
+                                    className=""
+                                />
+                            </div>
+                        </div>
+                        <div className="flex basis-full sm:basis-1/2 md:basis-full lg:basis-1/2 gap-6 w-fit">
+                            <div className="flex gap-2">
+                                <label htmlFor="court-5" className="font-semibold">5</label>
+                                <input 
+                                    type="checkbox"
+                                    id="court-5"
+                                    onChange={handleCourts}
+                                    name="Court 5"
+                                    checked={courts["Court 5"]}
+                                    className=""
+                                />
+                            </div>
+                            <div className="flex gap-2">
+                                <label htmlFor="court-6" className="font-semibold">6</label>
+                                <input 
+                                    type="checkbox"
+                                    id="court-6"
+                                    onChange={handleCourts}
+                                    name="Court 6"
+                                    checked={courts["Court 6"]}
+                                    className=""
+                                />
+                            </div>
+                            <div className="flex gap-2">
+                                <label htmlFor="court-7" className="font-semibold">7</label>
+                                <input 
+                                    type="checkbox"
+                                    id="court-7"
+                                    onChange={handleCourts}
+                                    name="Court 7"
+                                    checked={courts["Court 7"]}
+                                    className=""
+                                />
+                            </div>
+                            <div className="flex gap-2">
+                                <label htmlFor="court-8" className="font-semibold">8</label>
+                                <input 
+                                    type="checkbox"
+                                    id="court-8"
+                                    onChange={handleCourts}
+                                    name="Court 8"
+                                    checked={courts["Court 8"]}
+                                    className="checkbox"
+                                />
+                            </div>
+                        </div>
                         
-                        <label htmlFor="court-2" className="mr-2 font-semibold">2</label>
-                        <input 
-                            type="checkbox"
-                            id="court-2"
-                            onChange={handleCourts}
-                            name="Court 2"
-                            checked={courts["Court 2"]}
-                            className="mr-4"
-                        />
-                        
-                        <label htmlFor="court-3" className="mr-2 font-semibold">3</label>
-                        <input 
-                            type="checkbox"
-                            id="court-3"
-                            onChange={handleCourts}
-                            name="Court 3"
-                            checked={courts["Court 3"]}
-                            className="mr-4"
-                        />
-                        
-                        <label htmlFor="court-4" className="mr-2 font-semibold">4</label>
-                        <input 
-                            type="checkbox"
-                            id="court-4"
-                            onChange={handleCourts}
-                            name="Court 4"
-                            checked={courts["Court 4"]}
-                            className="mr-4"
-                        />
-                        
-                        <label htmlFor="court-5" className="mr-2 font-semibold">5</label>
-                        <input 
-                            type="checkbox"
-                            id="court-5"
-                            onChange={handleCourts}
-                            name="Court 5"
-                            checked={courts["Court 5"]}
-                            className="mr-4"
-                        />
-                        
-                        <label htmlFor="court-6" className="mr-2 font-semibold">6</label>
-                        <input 
-                            type="checkbox"
-                            id="court-6"
-                            onChange={handleCourts}
-                            name="Court 6"
-                            checked={courts["Court 6"]}
-                            className="mr-4"
-                        />
-
-                        <label htmlFor="court-7" className="mr-2 font-semibold">7</label>
-                        <input 
-                            type="checkbox"
-                            id="court-7"
-                            onChange={handleCourts}
-                            name="Court 7"
-                            checked={courts["Court 7"]}
-                            className="mr-4"
-                        />
-
-                        <label htmlFor="court-8" className="mr-2 font-semibold">8</label>
-                        <input 
-                            type="checkbox"
-                            id="court-8"
-                            onChange={handleCourts}
-                            name="Court 8"
-                            checked={courts["Court 8"]}
-                            className="mr-4"
-                        />
                     </div>
                 </fieldset>
                 
                 {/* Algorithm types */}
-                <fieldset className="p-2 sm:p-4 my-2 sm:my-4 text-lg">
-                    <legend className="px-2">Scheduling algorithm</legend>
+                <fieldset className="p-2 sm:p-4 my-6 md:my-8 lg:my-10">
+                    <legend className="px-2 rounded-md">Scheduling Algorithm</legend>
                     <input 
                         type="radio"
                         id="random"
@@ -145,7 +159,7 @@ export default function ScheduleForm({players, suggestedPlayers, maxPlayers, cou
                         checked={algorithm === "random"}
                         onChange={(e) => setAlgorithm(e.target.value)}
                     />
-                    <label htmlFor="random" className="ml-2 font-semibold">Random</label>
+                    <label htmlFor="random" className="ml-2 font-semibold text-[var(--on-surface-color)]">Random</label>
                     <br />
 
                     <input 
@@ -157,7 +171,7 @@ export default function ScheduleForm({players, suggestedPlayers, maxPlayers, cou
                         onChange={(e) => setAlgorithm(e.target.value)}
                         disabled
                     />
-                    <label htmlFor="teams" className="ml-2">Teams (coming soon)</label>
+                    <label htmlFor="teams" className="ml-2 text-[var(--on-surface-color)]">Teams (coming soon)</label>
                     <br />
 
                     {/* <input 
@@ -174,68 +188,70 @@ export default function ScheduleForm({players, suggestedPlayers, maxPlayers, cou
                 </fieldset>
 
                 {/* Time picker */}
-                <fieldset className="p-2 sm:p-4 my-2 sm:my-4 text-lg">
-                    <legend className="px-2">Session timings</legend>
+                <fieldset className="p-2 sm:p-4 my-6 md:my-8 lg:my-10">
+                    <legend className="px-2 rounded-md">Session Timings</legend>
                     {/* Session length picker */}
-                    <div className="sm:flex mb-2">
-                        <p className="w-fit bg-[var(--secondary-color)] font-semibold sm:mr-4 ">Session length (minutes)</p>
-                        <div>
-                            <input 
-                                type="radio"
-                                id="30-mins"
-                                name="sessionLength"
-                                value="30"
-                                checked={sessionLength === "30"}
-                                onChange={(e) => setSessionLength(e.target.value)}
-                            />
-                            <label htmlFor="30-mins" className={sessionLength === "30" ? "ml-2 mr-6 font-semibold" : "ml-2 mr-6"}>30</label>
-                        </div>
-                        <div>
-                            <input 
-                                type="radio"
-                                id="60-mins"
-                                name="sessionLength"
-                                value="60"
-                                checked={sessionLength === "60"}
-                                onChange={(e) => setSessionLength(e.target.value)}
-                            />
-                            <label htmlFor="60-mins" className={sessionLength === "60" ? "ml-2 mr-6 font-semibold" : "ml-2 mr-6"}>60</label>
-                        </div>
-                        <div>
-                            <input 
-                                type="radio"
-                                id="90-mins"
-                                name="sessionLength"
-                                value="90"
-                                checked={sessionLength === "90"}
-                                onChange={(e) => setSessionLength(e.target.value)}
-                            />
-                            <label htmlFor="90-mins" className={sessionLength === "90" ? "ml-2 mr-6 font-semibold" : "ml-2 mr-6"}>90</label>
-                        </div>
-                        <div>
-                            <input 
-                                type="radio"
-                                id="120-mins"
-                                name="sessionLength"
-                                value="120"
-                                checked={sessionLength === "120"}
-                                onChange={(e) => setSessionLength(e.target.value)}
-                            />
-                            <label htmlFor="120-mins" className={sessionLength === "120" ? "ml-2 mr-6 font-semibold" : "ml-2 mr-6"}>120</label>
+                    <div className="flex-col mb-4">
+                        <p className="font-semibold text-[var(--on-surface-color)]">Session Length (minutes)</p>
+                        <div className="flex">
+                            <div className="flex">
+                                <input 
+                                    type="radio"
+                                    id="30-mins"
+                                    name="sessionLength"
+                                    value="30"
+                                    checked={sessionLength === "30"}
+                                    onChange={(e) => setSessionLength(e.target.value)}
+                                />
+                                <label htmlFor="30-mins" className={sessionLength === "30" ? "text-[var(--on-surface-color)] ml-2 mr-6 font-semibold" : "text-[var(--on-surface-color)] ml-2 mr-6"}>30</label>
+                            </div>
+                            <div className="flex">
+                                <input 
+                                    type="radio"
+                                    id="60-mins"
+                                    name="sessionLength"
+                                    value="60"
+                                    checked={sessionLength === "60"}
+                                    onChange={(e) => setSessionLength(e.target.value)}
+                                />
+                                <label htmlFor="60-mins" className={sessionLength === "60" ? "text-[var(--on-surface-color)] ml-2 mr-6 font-semibold" : "text-[var(--on-surface-color)] ml-2 mr-6"}>60</label>
+                            </div>
+                            <div className="flex">
+                                <input 
+                                    type="radio"
+                                    id="90-mins"
+                                    name="sessionLength"
+                                    value="90"
+                                    checked={sessionLength === "90"}
+                                    onChange={(e) => setSessionLength(e.target.value)}
+                                />
+                                <label htmlFor="90-mins" className={sessionLength === "90" ? "text-[var(--on-surface-color)] ml-2 mr-6 font-semibold" : "text-[var(--on-surface-color)] ml-2 mr-6"}>90</label>
+                            </div>
+                            <div className="flex">
+                                <input 
+                                    type="radio"
+                                    id="120-mins"
+                                    name="sessionLength"
+                                    value="120"
+                                    checked={sessionLength === "120"}
+                                    onChange={(e) => setSessionLength(e.target.value)}
+                                />
+                                <label htmlFor="120-mins" className={sessionLength === "120" ? "text-[var(--on-surface-color)] ml-2 mr-6 font-semibold" : "text-[var(--on-surface-color)] ml-2 mr-6"}>120</label>
+                            </div>
                         </div>
                     </div>
 
                     {/* Session start time */}
                     <div className="flex">
-                        <label htmlFor="start-time" className="w-[150px] font-semibold">Start time</label>
+                        <label htmlFor="start-time" className="text-[var(--on-surface-color)] w-[150px] font-semibold">Start Time</label>
                         <select 
                             id="start-time"
                             onChange={e => setStartTime(e.target.value)}
                             value={startTime}
-                            className="w-[160px] text-center"
+                            className="w-[120px] text-center"
                             required
                         >
-                            <option value="">Choose Time</option>
+                            <option value="">Select</option>
                             <option value="07:00">07:00</option>
                             <option value="07:30">07:30</option>
                             <option value="08:00">08:00</option>
@@ -269,20 +285,20 @@ export default function ScheduleForm({players, suggestedPlayers, maxPlayers, cou
                     
                     {/* Session finish time */}
                     <div className="flex">
-                        <label htmlFor="finish-time" className="w-[150px] font-semibold">Finish time</label>
+                        <label htmlFor="finish-time" className="text-[var(--on-surface-color)] w-[150px] font-semibold">Finish Time</label>
                         <select 
                             id="finish-time"
                             onChange={e => setFinishTime(e.target.value)}
                             value={finishTime}
-                            className="w-[160px] text-center"
+                            className="w-[120px] text-center"
                             required
                         >
-                            <option value="">{startTime == "" ? "Pick a Start Time" : "Choose Time"}</option>
+                            <option value="">{startTime == "" ? "N/A" : "Select"}</option>
                             {finishTimeOptions}
                         </select>
                     </div>
                 </fieldset>
-                <button className={validationPassed ? "mx-2 my-4 border-2 text-xl font-bold" : "mx-2 my-4 border-2 text-xl font-bold bg-[var(--primary-alt-color)]"}>Generate Schedule</button>
+                <button className={validationPassed ? "m-2 sm:m-4 text-xl font-bold bg-[var(--primary-variant-color)] text-[var(--on-surface-color)] rounded-md" : "m-2 sm:m-4 text-xl font-bold bg-[var(--button-color)] text-[var(--on-surface-color)] rounded-md"}>Generate Schedule</button>
               </form>
         </>
     )

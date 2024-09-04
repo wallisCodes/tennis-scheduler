@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-[data-theme="roland-garros"] {
+/* [data-theme="rg"] {
     --primary-color: #c85a19;
     --primary-alt-color: #e9874e;
     --secondary-color: #006039;
@@ -11,88 +11,94 @@
     --button-text-color: white;
     --legend-text-color: white;
     --table-header-color: black;
+} */
+
+
+
+[data-theme="light"] {
+    --background-color: #;
+    --app-bar-color: rgba(0 0 0 / 0.09);
+    --surface-color: #121212;
+    --primary-color: #;
+    --secondary-color: #;
+    --on-background-color: #;
+    --on-surface-color: #;
+    --on-primary-color: #;
+    --on-secondary-color: #;
 }
 
-[data-theme="wimbledon"] {
-    --primary-color: #006633;
-    --primary-alt-color: #00cc66;
-    --secondary-color: #4c2178;
-    --secondary-alt-color: #813bc9;
-    --tertiary-color: white;
-    --button-text-color: white;
-    --legend-text-color: white;
-    --table-header-color: black;
+[data-theme="dark"] {
+    --background-color: #121212;
+    --app-bar-color: rgba(255 255 255 / 0.09);
+    --nav-drawer-color: rgba(255 255 255 / 0.15);
+    --card-color: rgba(255 255 255 / 0.11);
+    --button-color: rgba(255 255 255 / 0.12);
+    --table-data-color: rgba(255 255 255 / 0.8);
+    /* --X-color: rgba(255 255 255 / 0.); */
+    --surface-color: #121212;
+    /* --primary-color: #bb86fc; */
+    /* --primary-color: #f6ff00; */
+    --primary-color: #09af00;
+    /* --primary-variant-color: #3700b3; */
+    /* --primary-variant-color: #0800ff; */
+    /* --primary-variant-color: #ffb800; */
+    --primary-variant-color: #007d00;
+    --on-background-color: #ffffff;
+    --on-surface-color: #ffffff;
+    --on-primary-color: #000000;
+    --on-primary-variant-color: rgba(255 255 255 / 0.9);
+    --error-color: #cf6679;
 }
 
-[data-theme="us-open"] {
-    --primary-color: #00228d;
-    --primary-alt-color: #003dfc;
-    --secondary-color: #f7cd00;
-    --secondary-alt-color: #ffe047;
-    --tertiary-color: black;
-    --button-text-color: white;
-    --legend-text-color: white;
-    --table-header-color: white;
-}
-
-[data-theme="aus-open"] {
-    --primary-color: #1b8cca;
-    --primary-alt-color: #51b3e8;
-    --secondary-color: white;
-    --secondary-alt-color: #e6e6e6;
-    --tertiary-color: black;
-    --button-text-color: white;
-    --legend-text-color: white;
-    --table-header-color: black;
-}
 
 input, select {
-    background-color: var(--secondary-alt-color);
+    background-color: var(--nav-drawer-color);
+    color: var(--on-surface-color);
 }
 
-button {
-    background-color: var(--primary-color);
-    color: var(--button-text-color);
-    border-color: var(--tertiary-color);
-    padding: 5px 20px;
+select :focus {
+    background-color: #cf6679;
 }
 
-button[data-theme="us-open"] {
+option {
+    background-color: #121212;
     color: white;
 }
 
-fieldset {
-    border: 1px solid var(--tertiary-color);
+option:hover {
+    background-color:#121212;
+}
+
+button {
+    padding: 5px 20px;
 }
 
 legend {
-    color: var(--legend-text-color);
+    color: var(--on-primary-color);
     background-color: var(--primary-color);
 }
 
 th, td {
-    padding: 5px 10px;
     border: 1px solid black;
     border-collapse: separate;
 }
 
-th {
-    width: 100px;
-}
-
 td {
-    width: 164px;
+    color: var(--table-data-color);
 }
 
-.App {
-    background-color: var(--primary-color);
+.back-button {
+    height: 24px;
+    width: 24px;
 }
 
-.box {
-    background-color: var(--secondary-color);
+@media only screen and (min-width: 640px) {
+    .back-button {
+        height: 36px;
+        width: 36px;
+    }
 }
 
 .blank-cell {
     border: none;
-    background-color: var(--secondary-color);
 }
